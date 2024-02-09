@@ -40,7 +40,7 @@ namespace Character.Business
             await _repository.SaveChangesAsync();
 
             var character = _mapper.Map<CharacterDTO>(characterDTO);
-            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreatInsert(character), cancellation);
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreateInsert(character), cancellation);
             await _repository.SaveChangesAsync();
         }
         public async Task Ascend(int ID, CancellationToken cancellation = default)
