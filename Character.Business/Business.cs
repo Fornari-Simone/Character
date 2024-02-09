@@ -51,6 +51,10 @@ namespace Character.Business
                 Elite = 1,
             }, cancellation);
             await _repository.SaveChangesAsync();
+
+            var character = _mapper.Map<CharacterDTO>(await _repository.GetCharacter(ID, cancellation));
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreateUpdate(character), cancellation);
+            await _repository.SaveChangesAsync();
         }
 
         public async Task<CharacterDTO?> GetCharacter(int ID, CancellationToken cancellation = default)
@@ -79,6 +83,11 @@ namespace Character.Business
                 Level = level,
             }, cancellation);
             await _repository.SaveChangesAsync();
+
+            var character = _mapper.Map<CharacterDTO>(await _repository.GetCharacter(ID, cancellation));
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreateUpdate(character), cancellation);
+            await _repository.SaveChangesAsync();
+
         }
 
         public async Task RemoveCharacter(int ID, CancellationToken cancellation = default)
@@ -89,7 +98,7 @@ namespace Character.Business
             await _repository.SaveChangesAsync(cancellation);
 
             var character = _mapper.Map<CharacterDTO>(characterDb);
-            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreatInsert(character), cancellation);
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreateDelete(character), cancellation);
             await _repository.SaveChangesAsync();
         }
     }
