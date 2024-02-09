@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character.API", "Character.API\Character.API.csproj", "{C15D9190-0184-442A-98FC-EBE464208217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character.API", "Character.API\Character.API.csproj", "{C15D9190-0184-442A-98FC-EBE464208217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character.Business", "Character.Business\Character.Business.csproj", "{CF2E07C2-FE70-4C9C-B8A2-BA306699FD7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character.Business", "Character.Business\Character.Business.csproj", "{CF2E07C2-FE70-4C9C-B8A2-BA306699FD7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character.ClientHTTP", "Character.ClientHTTP\Character.ClientHTTP.csproj", "{A0571A4F-F525-4AD5-AEB3-55BD8E792C35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character.ClientHTTP", "Character.ClientHTTP\Character.ClientHTTP.csproj", "{A0571A4F-F525-4AD5-AEB3-55BD8E792C35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character.Repository", "Character.Repository\Character.Repository.csproj", "{8F898E50-10E9-4C0B-BDFB-F252A66E918B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character.Repository", "Character.Repository\Character.Repository.csproj", "{8F898E50-10E9-4C0B-BDFB-F252A66E918B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character.Shared", "Character.Shared\Character.Shared.csproj", "{6CD22E25-D68B-4DC5-96CA-D15D73D069AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character.Shared", "Character.Shared\Character.Shared.csproj", "{6CD22E25-D68B-4DC5-96CA-D15D73D069AD}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D504032D-23FC-47F5-A453-2B2D4A2DB24D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6CD22E25-D68B-4DC5-96CA-D15D73D069AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CD22E25-D68B-4DC5-96CA-D15D73D069AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CD22E25-D68B-4DC5-96CA-D15D73D069AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D504032D-23FC-47F5-A453-2B2D4A2DB24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D504032D-23FC-47F5-A453-2B2D4A2DB24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D504032D-23FC-47F5-A453-2B2D4A2DB24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D504032D-23FC-47F5-A453-2B2D4A2DB24D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

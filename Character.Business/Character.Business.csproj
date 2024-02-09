@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Utility.Kafka" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Character.Repository\Character.Repository.csproj" />
     <ProjectReference Include="..\Character.Shared\Character.Shared.csproj" />
   </ItemGroup>

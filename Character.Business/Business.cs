@@ -1,4 +1,6 @@
-﻿using Character.Business.Abstraction;
+﻿using AutoMapper;
+using Character.Business.Abstraction;
+using Character.Business.Factory;
 using Character.Repository.Abstraction;
 using Character.Repository.Model;
 using Character.Shared;
@@ -15,10 +17,12 @@ namespace Character.Business
     {
         private readonly IRepository _repository;
         private readonly ILogger<Business> _logger;
-        public Business(IRepository repository, ILogger<Business> logger)
+        private readonly IMapper _mapper;
+        public Business(IRepository repository, ILogger<Business> logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
         public async Task AddCharacter(CharacterDTO characterDTO, CancellationToken cancellation = default)
         {
@@ -34,8 +38,11 @@ namespace Character.Business
                 Trait = characterDTO.Trait,
             }, cancellation);
             await _repository.SaveChangesAsync();
-        }
 
+            var character = _mapper.Map<CharacterDTO>(characterDTO);
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreatInsert(character), cancellation);
+            await _repository.SaveChangesAsync();
+        }
         public async Task Ascend(int ID, CancellationToken cancellation = default)
         {
             await _repository.UpdateCharacter(new CharacterDb
@@ -80,6 +87,10 @@ namespace Character.Business
             if (characterDb == null) { return; }
             await _repository.RemoveCharacter(characterDb, cancellation);
             await _repository.SaveChangesAsync(cancellation);
+
+            var character = _mapper.Map<CharacterDTO>(characterDb);
+            await _repository.InsertTransactionalOutbox(TransactionalOutboxFactory.CreatInsert(character), cancellation);
+            await _repository.SaveChangesAsync();
         }
     }
 }

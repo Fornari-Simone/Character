@@ -19,5 +19,6 @@ namespace Character.Repository
         }
 
         public DbSet<CharacterDb> CharacterDb { get; set; }
+        public DbSet<TransactionalOutbox> TransitionalOutboxes { get; set; }
     }
 }

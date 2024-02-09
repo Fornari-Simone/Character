@@ -14,5 +14,11 @@ namespace Character.Repository.Abstraction
         Task<CharacterDb?> GetCharacter(int ID, CancellationToken cancellation = default);
         Task RemoveCharacter(CharacterDb? character, CancellationToken cancellation = default);
         Task UpdateCharacter(CharacterDb? character, CancellationToken cancellation = default);
+
+        // TransationalOutbox
+        Task DeleteTransactionalOutbox(long ID, CancellationToken cancellation);
+        Task<TransactionalOutbox?> GetAllTransactionalOutboxByKey(long ID, CancellationToken cancellation = default);
+        Task<IEnumerable<TransactionalOutbox>> GetAllTransactionalOutbox(CancellationToken cancellation);
+        Task InsertTransactionalOutbox(TransactionalOutbox transactionalOutbox, CancellationToken cancellation = default);
     }
 }

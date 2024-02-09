@@ -3,6 +3,8 @@ using Character.Repository.Abstraction;
 using Character.Business;
 using Character.Business.Abstraction;
 using Microsoft.EntityFrameworkCore;
+using Character.Business.Kafka;
+using Character.Business.Profiles;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<CharacterDbContext>(op =>
     a => a.MigrationsAssembly("Character.API")));
 builder.Services.AddScoped<IBusiness, Business>();
 builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddKafkaProducerService<KafkaTopicsOutput, ProducerService>(builder.Configuration);
+object value = builder.Services.AddAutoMapper(typeof(AssemblyMarker));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
