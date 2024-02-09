@@ -13,6 +13,6 @@ namespace Character.Repository.Abstraction
         Task AddCharacter(CharacterDb character, CancellationToken cancellation = default);
         Task<CharacterDb?> GetCharacter(int ID, CancellationToken cancellation = default);
         Task RemoveCharacter(CharacterDb? character, CancellationToken cancellation = default);
-        Task UpdateCharacter(CharacterDb? character, int ID, CancellationToken cancellation = default);
+        Task UpdateCharacter(CharacterDb? character, CancellationToken cancellation = default);
     }
 }

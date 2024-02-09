@@ -30,9 +30,9 @@ namespace Character.Repository
             return await _context.SaveChangesAsync(cancellation);
         }
 
-        public async Task UpdateCharacter(CharacterDb? character, int ID, CancellationToken cancellation = default)
+        public async Task UpdateCharacter(CharacterDb? character, CancellationToken cancellation = default)
         {
-            CharacterDb? characterDb = await this.GetCharacter(ID, cancellation);
+            CharacterDb? characterDb = await this.GetCharacter(character.ID, cancellation);
             if (characterDb != null && character != null) 
             {
                 if (character.Elite > 0)

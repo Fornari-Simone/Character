@@ -40,8 +40,9 @@ namespace Character.Business
         {
             await _repository.UpdateCharacter(new CharacterDb
             {
+                ID = ID,
                 Elite = 1,
-            }, ID, cancellation);
+            }, cancellation);
             await _repository.SaveChangesAsync();
         }
 
@@ -66,9 +67,10 @@ namespace Character.Business
         {
             await _repository.UpdateCharacter(new CharacterDb
             {
+                ID = ID,
                 Elite = 0,
                 Level = level,
-            }, ID, cancellation);
+            }, cancellation);
             await _repository.SaveChangesAsync();
         }
 
