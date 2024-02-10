@@ -16,6 +16,9 @@ namespace Character.Repository
         {
             modelBuilder.Entity<CharacterDb>().HasKey(p => p.ID);
             modelBuilder.Entity<CharacterDb>().Property(p => p.ID).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<TransactionalOutbox>().HasKey(e => new { e.ID });
+            modelBuilder.Entity<TransactionalOutbox>().Property(e => e.ID).ValueGeneratedOnAdd();
         }
 
         public DbSet<CharacterDb> CharacterDb { get; set; }

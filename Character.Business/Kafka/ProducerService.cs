@@ -30,7 +30,7 @@ namespace Character.Business.Kafka
             IEnumerable<TransactionalOutbox> transactionalOutboxes = (await repository.GetAllTransactionalOutbox(cancellation)).OrderBy(x => x.ID);
             if (!transactionalOutboxes.Any())
             {
-                Logger.LogInformation($"Nessun TransitionalOutbox");
+                Logger.LogInformation("Nessun TransitionalOutbox");
                 return;
             }
 
@@ -51,10 +51,10 @@ namespace Character.Business.Kafka
                         _ => throw new ArgumentOutOfRangeException($"La tabella {item.Tabella} non è prevista come topic nel Producer")
                     };
 
-                    Logger.LogInformation($"Scrittura sul topic: {topic}", topic);
+                    Logger.LogInformation("Scrittura sul topic: {topic}", topic);
                     await ProducerClient.ProduceAsync(topic, item.Messaggio, cancellation);
 
-                    Logger.LogInformation($"Eliminazione {message}", message);
+                    Logger.LogInformation("Eliminazione {message}", message);
                     await repository.DeleteTransactionalOutbox(item.ID, cancellation);
 
                     await repository.SaveChangesAsync(cancellation);

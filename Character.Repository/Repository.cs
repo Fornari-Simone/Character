@@ -45,7 +45,7 @@ namespace Character.Repository
         // TransactionalOutbox
         public async Task InsertTransactionalOutbox(TransactionalOutbox transactionalOutbox, CancellationToken cancellation = default)
         {
-            await _context.TransitionalOutboxes.AddAsync(transactionalOutbox);
+            await _context.TransitionalOutboxes.AddAsync(transactionalOutbox, cancellation);
         }
         public async Task DeleteTransactionalOutbox(long ID, CancellationToken cancellation)
         {

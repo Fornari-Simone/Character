@@ -58,6 +58,27 @@ namespace Character.API.Migrations
 
                     b.ToTable("CharacterDb");
                 });
+
+            modelBuilder.Entity("Character.Repository.Model.TransactionalOutbox", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ID"));
+
+                    b.Property<string>("Messaggio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tabella")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TransitionalOutboxes");
+                });
 #pragma warning restore 612, 618
         }
     }
