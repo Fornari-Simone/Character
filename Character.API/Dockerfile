@@ -15,7 +15,7 @@ COPY ["Character.API/Character.API.csproj", "Character.API/"]
 COPY ["Character.Business/Character.Business.csproj", "Character.Business/"]
 COPY ["Character.Repository/Character.Repository.csproj", "Character.Repository/"]
 COPY ["Character.Shared/Character.Shared.csproj", "Character.Shared/"]
-RUN dotnet restore "./Character.API/Character.API.csproj"
+RUN dotnet restore "./Character.API/./Character.API.csproj"
 COPY . .
 WORKDIR "/src/Character.API"
 RUN dotnet build "./Character.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
