@@ -39,7 +39,7 @@ jobs:
           context: .
           file: Character.API/Dockerfile
           build-args: |
-            "TOKEN=${{ secrets.TOKEN }}
+            "TOKEN=${{ secrets.TOKEN }}"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
